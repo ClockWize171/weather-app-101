@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "weather-app-101",
+    "name": "Weather App 101",
     "slug": "weather-app-101",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,10 +24,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.clockwize171.weatherapp101"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ebcf3360-6d3d-4c5f-8e4f-ae85e2cf9333"
+      }
     }
   }
 }
