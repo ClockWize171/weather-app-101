@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Platform } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { NativeBaseProvider, Box, Spinner, ScrollView } from 'native-base'
 import { LinearGradient } from 'expo-linear-gradient';
 import ErrorCard from "./src/components/ErrorCard/ErrorCard";
@@ -37,34 +39,36 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
-      <LinearGradient
-        colors={['#6d28d9', '#a78bfa']}
-        start={{ x: 0.3, y: 0.62 }}
-        style={{ flex: 1 }}
-        end={{ x: 0.2, y: 0.1 }}
-      >
-        <ScrollView>
-          <Box safeArea>
-            <SearchBar input={input} setInput={setInput} handleSubmit={handleSubmit} />
-            <>
-              {loading ?
-                (
-                  <Spinner size='lg' color='white' mt={10} />
-                ) : (
-                  <>
-                    {data.length === 0 ?
-                      (
-                        <ErrorCard imageHandle={imageHandle} error={error} />
-                      ) : (
-                        <WeatherCard data={data} />
-                      )
-                    }
-                  </>
-                )}
-            </>
-          </Box>
-        </ScrollView>
-      </LinearGradient>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#a78bfa' }}>
+        <LinearGradient
+          colors={['#6d28d9', '#a78bfa']}
+          start={{ x: 0.3, y: 0.62 }}
+          style={{ flex: 1 }}
+          end={{ x: 0.2, y: 0.1 }}
+        >
+          <ScrollView>
+            <Box>
+              <SearchBar input={input} setInput={setInput} handleSubmit={handleSubmit} />
+              <>
+                {loading ?
+                  (
+                    <Spinner size='lg' color='white' mt={10} />
+                  ) : (
+                    <>
+                      {data.length === 0 ?
+                        (
+                          <ErrorCard imageHandle={imageHandle} error={error} />
+                        ) : (
+                          <WeatherCard data={data} />
+                        )
+                      }
+                    </>
+                  )}
+              </>
+            </Box>
+          </ScrollView>
+        </LinearGradient>
+      </SafeAreaView>
     </NativeBaseProvider>
   );
 }
